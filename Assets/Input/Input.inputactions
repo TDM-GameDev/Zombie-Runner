@@ -1,0 +1,51 @@
+{
+    "name": "Input",
+    "maps": [
+        {
+            "name": "PlayerControl",
+            "id": "b79e6985-d361-436b-bf98-c845fd3ac639",
+            "actions": [
+                {
+                    "name": "FireWeapon",
+                    "type": "Button",
+                    "id": "6858bb8e-b40a-4369-ba68-315df037c21b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "036716a9-87e2-4171-b5d3-79b9db468247",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "FireWeapon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Keyboard",
+            "bindingGroup": "Keyboard",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
