@@ -50,6 +50,9 @@ public class Weapon : MonoBehaviour
                 //    target.TakeDamage(damage);
                 //}
             }
+            else {
+                FireWeapon();
+            }
         }
         else {
             timeSinceLastFired += Time.deltaTime;
@@ -64,6 +67,16 @@ public class Weapon : MonoBehaviour
             projScript.SetParentOfMuzzleFlash(projectileSpawnPosition);
         }
         projectile.transform.LookAt(hit.point); //Sets the projectile's rotation to look at the target
+        projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * speed); //Set the speed of the projectile by applying force to the rigidbody
+    }
+
+    private void FireWeapon() {
+        GameObject projectile = Instantiate(projectileObj, projectileSpawnPosition.position, Quaternion.identity) as GameObject; //Spawns the projectile
+        if (projectile.TryGetComponent(out SciFiArsenal.SciFiProjectileScript projScript)) {
+            projScript.SetDamage(damage);
+            projScript.SetParentOfMuzzleFlash(projectileSpawnPosition);
+        }
+        projectile.transform.rotation = transform.rotation; //Sets the projectile's rotation to look at the target
         projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * speed); //Set the speed of the projectile by applying force to the rigidbody
     }
 

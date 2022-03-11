@@ -9,7 +9,7 @@ public class EnemyHealth : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -19,6 +19,10 @@ public class EnemyHealth : MonoBehaviour
     }
 
     public void TakeDamage(float damage) {
+        if (TryGetComponent(out EnemyAI ai)) {
+            BroadcastMessage(nameof(ai.OnDamageTaken));
+        }
+
         hitPoints -= damage;
         if (hitPoints <= 0) {
             Die();

@@ -7,11 +7,9 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] FloatVariable hitPoints;
     [SerializeField] BoolVariable isAlive;
     [SerializeField] float startingHP = 100f;
-    //private float hitPoints = 100f;
+    [SerializeField] DeathHandler deathHandler;
 
-    //public float HitPoints => hitPoints;
-
-    private void Start() {
+    private void Awake() {
         isAlive.Value = true;
         hitPoints.Value = startingHP;
     }
@@ -19,13 +17,8 @@ public class PlayerHealth : MonoBehaviour
     void Update()
     {
         if (hitPoints.Value <= 0 && isAlive.Value) {
-            Die();
+            //deathHandler.HandleDeath();
         }
-    }
-
-    private void Die() {
-        isAlive.Value = false;
-        Debug.Log("Player has died.");
     }
 
     public void TakeDamage(float dmgValue) {
